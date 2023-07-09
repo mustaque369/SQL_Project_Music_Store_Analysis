@@ -32,9 +32,7 @@ group by billing_city
 order by invoice_total desc
 ```
 
-### Q5: who is the best customer? The customer who has spent the most
-### money will be declared the best customer. Write a query that return 
-### the person who has spent the most money.
+### Q5: who is the best customer? The customer who has spent the most money will be declared the best customer. Write a query that return the person who has spent the most money.
 
 ```
 select customer.customer_id,customer.first_name, customer.last_name, SUM(invoice.total) as total
@@ -48,9 +46,7 @@ limit 1
 ## Question set-2 (Moderate)
 	
 	
-### Q1: Write query to return the email,first name, last name, and Genre of
-### all Rock Muisc Listeners, Return you list ordered alphabetically by email
-### strating with A.
+### Q1: Write a query to return the email, first name, last name, and Genre of all Rock Music Listeners, Return your list ordered alphabetically by email starting with A.
 
 ```
 SELECT DISTINCT email, first_name, last_name
@@ -64,9 +60,7 @@ where genre.name LIKE 'Rock')
 order by email;
 ```
  
- ### Q2: Let's invite the artist who has written the most rock music in
- ### our dataset. Write a query that return the Artist name and total
- ### track count of the top 10 rock bands'.
+ ### Q2: Let's invite the artist who has written the most rock music in our dataset. Write a query that returns the Artist name and total  track count of the top 10 rock bands.
  
  ```
  SELECT artist.artist_id,artist.name,COUNT(artist.artist_id) AS number_of_songs
@@ -76,14 +70,11 @@ order by email;
  JOIN genre ON genre.genre_id = track.genre_id
  WHERE genre.name Like 'Rock'
  Group by artist.artist_id
- ORder by number_of_songs DESC
+ Order by number_of_songs DESC
  Limit 10;
  ```
 
- ### Q3: Return all the track name that have a song lenth longer than
- ### the average song length. Return the Name and Millisecond for 
- ### each track. Order by the song length with the longest song listed 
- ### first.
+ ### Q3: Return all the track names that have a song length longer than the average song length. Return the Name and Millisecond for each track. Order by the song length with the longest song listed first.
  
 ```
 SELECT name, milliseconds
@@ -95,8 +86,7 @@ ORDER BY milliseconds DESC;
 ```
 ## Questions set-3 (Advance)
 				 
-### Q1: Find how much amount spent by each customer on artist?
-### Write a query to return customer name,artist name and total spent.
+### Q1: Find how much amount spent by each customer on the artist. Write a query to return the customer name, artist name, and total spent.
 
 ```
 WITH best_selling_artist AS (
@@ -120,9 +110,7 @@ GROUP BY 1,2,3,4
 ORDER BY 5 DESC;
 ```
 
-### Q2: We want to find out the most popular music Genre for each country. We determine the most popular genre as the genre 
-### with the highest amount of purchases. Write a query that returns each country along with the top Genre. For countries where 
-### the maximum number of purchases is shared return all Genres.
+### Q2: We want to find out the most popular music Genre for each country. We determine the most popular genre as the genre with the highest amount of purchases. Write a query that returns each country along with the top Genre. For countries where the maximum number of purchases is shared return all Genres.
 
 
  ### Method 1: Using CTE 
@@ -143,7 +131,7 @@ WITH popular_genre AS
 SELECT * FROM popular_genre WHERE RowNo <= 1
 ```
 
-### Method 2: : Using Recursive 
+### Method 2: Using Recursive 
 
 ```
 WITH RECURSIVE
@@ -168,12 +156,10 @@ JOIN max_genre_per_country ON sales_per_country.country = max_genre_per_country.
 WHERE sales_per_country.purchases_per_genre = max_genre_per_country.max_genre_number;
 ```
 
-### Q3: Write a query that determines the customer that has spent the most on music for each country. 
-### Write a query that returns the country along with the top customer and how much they spent. 
-### For countries where the top amount spent is shared, provide all customers who spent this amount. */
+### Q3: Write a query that determines the customer that has spent the most on music for each country. Write a query that returns the country along with the top customer and how much they spent. For countries where the top amount spent is shared, provide all customers who spent this amount.
 
 
-### Method 1: using CTE 
+### Method 1: Using CTE 
 ```
 WITH Customter_with_country AS (
 		SELECT customer.customer_id,first_name,last_name,billing_country,SUM(total) AS total_spending,
