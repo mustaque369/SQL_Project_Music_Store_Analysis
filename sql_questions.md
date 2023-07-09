@@ -17,16 +17,13 @@ group by billing_country
 order by Total desc 
 ```
 
-### Q3: What are top 3 values of total invoices ?
+### Q3: What are top 3 values of total invoices?
 
 ``` SELECT total from invoice
 order by total desc
 limit 3
 ```
-### Q4: Which city has the best customers ? we would like to
-### throw a promotional Mujsic Festival in the city we made the most money.
-### Write a query that return one city taht hs the highest sum of invoices 
-### total. returnr both the city name ans sum of all invoices total
+### Q4: Which city has the best customers? we would like to throw a promotional Music Festival in the city we made the most money. Write a query that returns one city that has the highest sum of invoices total. return both the city name and the sum of all invoice's total.
 
 ```
 Select billing_city,sum(total) as invoice_total
