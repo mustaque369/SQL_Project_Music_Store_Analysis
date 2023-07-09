@@ -1,10 +1,12 @@
---       Questions set-1 (Easy)
+## Questions set-1 (Easy)
 
--- Q1: Who is the senior most Employee based on the job tittle ?
+### Q1: Who is the senior Employee based on the job title?
 
+```
 Select * from employee
 order by levels desc
 limit 1 ;
+```
 
 -- Q2: Which country has the most invoices ?
 
