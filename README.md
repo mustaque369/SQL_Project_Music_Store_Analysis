@@ -5,4 +5,5 @@ In this project I have analyzed the music playlist database, also examined the d
 ## Database_and_Tools
 * Postgre SQL
 * PgAdmin4
+  
 Schema- Music Store Database
